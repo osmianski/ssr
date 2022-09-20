@@ -6,6 +6,7 @@ export default defineConfig({
     plugins: [
         laravel({
             input: 'resources/js/app.js',
+            ssr: 'resources/js/ssr.js',
             refresh: true,
         }),
         vue({
@@ -17,4 +18,8 @@ export default defineConfig({
             },
         }),
     ],
+    ssr: {
+        // fix, see https://github.com/inertiajs/server/issues/10#issuecomment-1208751934
+        noExternal: ['@inertiajs/server'],
+    },
 });
